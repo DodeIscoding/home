@@ -4,28 +4,51 @@ import "./Notice.css";
 import Axios, { post } from "axios";
 import { useHistory } from "react-router-dom"
 import ReactHtmlParser from "react-html-parser"
-export default function Noticeboard() {
+import moment from 'moment';
 
+export default function Noticeboard() {
+    
+    let timer = null;
+    const [time, setTime] = useState(moment());
+
+    useEffect(() => {
+        timer = setInterval(() => { //timer 라는 변수에 인터벌 종료를 위해 저장  
+            setTime(moment()); // 현재 시간 세팅 
+        }, 1000); //1000ms = 1s 간 반복 
+        return () => {
+            clearInterval(timer); // 함수 언마운트시 clearInterval 
+        };
+    }, []);
+
+    const new_time = time.format('YYYY.MM.DD');
 
 
     const [TitleValue, setTitleValue] = useState("")
     const [ContentValue, setContentValue] = useState("")
+    const [idx,setidx] = useState()
     const [viewContent, setViewContent] = useState([]);
+    const [count,setcount] = useState()
 
+    let count_number = 0;
     const submitTest = () => {
         document.querySelector(".lll").classList.remove("display-off");
         document.getElementById("addlist").classList.add("display-off")
         document.getElementById("addlist").classList.remove("poi")
+        count_number = count_number + 1;
+        setcount(count_number)
         Axios.post("http://localhost:4000/add",
             {
                 title: TitleValue,
                 name: ContentValue,
+                time1: new_time,
+
             }).then((response) => {
                 console.log(response)
             })
         setTitleValue("")
         setContentValue("")
     };
+    
     let boarddata;
     let board_name;
     let board_content;
@@ -35,10 +58,14 @@ export default function Noticeboard() {
         Axios.get("http://localhost:4000/list", {})
             .then((res) => {
                 const { data } = res;
+                boarddata = data
+                for(var i=0;i< data.length; i++){
+                setidx(data[i].idx)
+                }
                 setViewContent(data)
-                console.log(viewContent)
             })
-    }, [])
+    }, [count])
+
 
     const cancel = () => {
         document.querySelector(".lll").classList.remove("display-off");
@@ -64,7 +91,7 @@ export default function Noticeboard() {
                     <div className="total-search">
                         <div className="total-box">
                             <p className="total">총</p>
-                            <p id="total_number" className="total-number">0</p>
+                            <p id="total_number" className="total-number">{idx}</p>
                             <p className="total-gun">건</p>
                         </div>
                         <div className="search-a">
@@ -83,11 +110,12 @@ export default function Noticeboard() {
                         </div>
                         <div id="list" className="lkj-under">
                             {viewContent.map(element =>
-                                <div className='div1-'>
-                                    <div>
-
-                                    </div>
-                                    <h2>{element.title}</h2>
+                                <div className='mnb'>
+                                    <div className='num-1'>{element.idx}</div>
+                                    <div className='noticetitle-1'>{element.title}</div>
+                                    <div className='writer-1'>{element.name}</div>
+                                    <div className='time-1'>{element.new_time}</div>
+                                    <div className='view-1'></div>
                                 </div>
                             )}
                         </div>
