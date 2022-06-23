@@ -1,0 +1,44 @@
+.menu_list{
+    min-width: 600px;
+    width: 25%;
+    display: flex;
+    font-weight: 400;
+    text-decoration: none;
+    font-size: 22px;
+    justify-content: space-between;
+}
+.menu_link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 70px;
+    color: black;
+    text-decoration: none;
+}
+.img_1{
+    display: flex;
+}
+.menu_box1{
+    margin-left: 23px;
+}
+.menu_box2{
+    background: #fff;
+    margin-left: 0px;
+    height: 5px;
+}
+.menu_link_1{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.icon_img{
+    margin-top: 5px;
+    margin-right: 10px
+}
+.menu_link:hover{
+    filter: invert(27%) sepia(63%) saturate(2235%) hue-rotate(187deg) brightness(90%) contrast(103%);
+}
+.menu_link:hover
+    .menu_box2{
+        margin-bottom: -5px;
+        filter: invert(64%) sepia(23%) saturate(862%) hue-rotate(181deg) brightness(93%) contrast(94%);
+    }
