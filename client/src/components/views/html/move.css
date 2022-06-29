@@ -1,0 +1,43 @@
+.go {
+    transform: translate(-100%);
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+}
+.go_1 {
+    transform: translate(0%);
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+}
+.go_img {
+    transition-duration: 0.3s;
+    transform: scaleX(1) !important;
+}
+.go_img_1 {
+    transition-duration: 0.3s;
+    transform: scaleX(-1) !important; 
+}
+
+.simple_search1 {
+    border: 0px !important; 
+    width: 50% !important;
+    color: black !important;
+    background-color: white !important;
+    border-top-left-radius: 10px !important; 
+    border-top-right-radius: 10px !important;
+}
+.area_search1 {
+    border: 0px !important; 
+    padding-top: 7px !important;
+    width: 50% !important;
+    color: gray !important;
+    background: #eff1fa !important;
+}
+
+.off_1 {
+    display: none;
+}
+.on_display {
+    display: block !important;
+}
