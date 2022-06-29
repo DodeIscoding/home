@@ -34,9 +34,9 @@ export default function Map_state() {
                 </div>
                 <div className={map_state.map_state_text}>
                     <ul>
-                        <li className={map_state.map_state_text_1}>등급별 툴팁으로 상세정보 확인이 가능합니다.<p />
+                        <li className={map_state.map_date_text}>등급별 툴팁으로 상세정보 확인이 가능합니다.<p />
                         </li>
-                        <li className={map_state.map_state_text_2}>현장의 실제속도와는 차이가 있을 수 있습니다.<p />
+                        <li className={map_state.map_date_text}>현장의 실제속도와는 차이가 있을 수 있습니다.<p />
                         </li>
                     </ul>
                 </div>

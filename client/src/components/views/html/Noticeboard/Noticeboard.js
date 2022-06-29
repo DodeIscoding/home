@@ -5,12 +5,13 @@ import Axios, { post } from "axios";
 import { useHistory } from "react-router-dom"
 import ReactHtmlParser from "react-html-parser"
 import moment from 'moment';
+import Pagination from "./Pagination"
+import axios from 'axios';
 
 export default function Noticeboard() {
-    
+
     let timer = null;
     const [time, setTime] = useState(moment());
-
     useEffect(() => {
         timer = setInterval(() => { //timer 라는 변수에 인터벌 종료를 위해 저장  
             setTime(moment()); // 현재 시간 세팅 
@@ -19,25 +20,28 @@ export default function Noticeboard() {
             clearInterval(timer); // 함수 언마운트시 clearInterval 
         };
     }, []);
-
     const new_time = time.format('YYYY.MM.DD');
-
 
     const [TitleValue, setTitleValue] = useState("")
     const [ContentValue, setContentValue] = useState("")
     const [idx,setidx] = useState()
     const [viewContent, setViewContent] = useState([]);
-    const [count,setcount] = useState()
+    const [postsPerPage] = useState(8);
+    const [currentPage, setCurrentPage] = useState(1);
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = viewContent.slice(indexOfFirstPost, indexOfLastPost);
 
-    let count_number = 0;
+      
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     const submitTest = () => {
         document.querySelector(".lll").classList.remove("display-off");
         document.getElementById("addlist").classList.add("display-off")
         document.getElementById("addlist").classList.remove("poi")
-        count_number = count_number + 1;
-        setcount(count_number)
         Axios.post("http://localhost:4000/add",
-            {
+            {   
                 title: TitleValue,
                 name: ContentValue,
                 time1: new_time,
@@ -48,25 +52,21 @@ export default function Noticeboard() {
         setTitleValue("")
         setContentValue("")
     };
-    
-    let boarddata;
-    let board_name;
-    let board_content;
-    let board_title;
-    let board_idx;
     useEffect(() => {
         Axios.get("http://localhost:4000/list", {})
             .then((res) => {
                 const { data } = res;
-                boarddata = data
-                for(var i=0;i< data.length; i++){
-                setidx(data[i].idx)
+                for(var i=0; i< data.length; i++){
+                    setidx(data[i].idx)
                 }
                 setViewContent(data)
             })
-    }, [count])
+    }, [viewContent])
+    
 
-
+    const search = () => {
+        
+    }
     const cancel = () => {
         document.querySelector(".lll").classList.remove("display-off");
         document.getElementById("addlist").classList.add("display-off")
@@ -80,6 +80,9 @@ export default function Noticeboard() {
     const onContentChange = (event) => {
         setContentValue(event.currentTarget.value);
     };
+
+
+    
     return (
         <>
             <div className="lll">
@@ -97,7 +100,7 @@ export default function Noticeboard() {
                         <div className="search-a">
                             <input type="text" id="text" placeholder="검색어를 입력해주세요" />
                             <button className='button' onClick={add1}>추가</button>
-                            <button className='button'>검색</button>
+                            <button className='button' onClick={search}>검색</button>
                         </div>
                     </div>
                     <div className="not">
@@ -109,9 +112,9 @@ export default function Noticeboard() {
                             <div className="view">조회수</div>
                         </div>
                         <div id="list" className="lkj-under">
-                            {viewContent.map(element =>
-                                <div className='mnb'>
-                                    <div className='num-1'>{element.idx}</div>
+                            {currentPosts.map((element) =>
+                                <div className='mnb'key={element.idx}>
+                                    <div className='num-1' >{element.idx} </div>
                                     <div className='noticetitle-1'>{element.title}</div>
                                     <div className='writer-1'>{element.name}</div>
                                     <div className='time-1'>{element.new_time}</div>
@@ -119,22 +122,8 @@ export default function Noticeboard() {
                                 </div>
                             )}
                         </div>
-                        <form className="rebox">
-                            {/* <input onchange="re1()" class="reinput"type="text" id="reid" placeholder="삭제할 번호를 입력해주세요."> */}
-                            <button onClick={re} className='button' type="reset">삭제</button>
-                        </form>
                         <div className="next">
-                            <div className="prev2">
-                                &lt;&lt;</div>
-                            <div className="prev">
-                                &lt;</div>
-                            <div className="num1">1</div>
-                            <div className="num2">2</div>
-                            <div className="num3">3</div>
-                            <div className="num4">4</div>
-                            <div className="num5">5</div>
-                            <div className="next1">&gt;</div>
-                            <div className="next2">&gt;&gt;</div>
+                            <Pagination postsPerPage={postsPerPage} totalPosts={viewContent.length} currentPage={currentPage} paginate={paginate}></Pagination>
                         </div>
                     </div>
                 </div>

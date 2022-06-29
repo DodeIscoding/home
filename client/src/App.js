@@ -5,6 +5,7 @@ import CCTV from "./components/views/Page/CCTV"
 import Parking from "./components/views/Page/Parking"
 import MapContainer from "./components/views/html/KakaoMap"
 import Noticeboard from "./components/views/Page/Noticeboard.js";
+import Contentsboard from "../src/components/views/html/Noticeboard/Contentsboard"
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Router>
     <div>
        <Switch>
+       <Route exact path="/Contentsboard:idx" component={(Contentsboard)} />
         <Route exact path="/Noticeboard" component={(Noticeboard)} />
           <Route exact path="/map" component={(MapContainer)} />
           <Route exact path="/" component={(Main)} />

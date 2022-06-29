@@ -2,7 +2,7 @@ import React from 'react'
 import "./Header1.css"
 import ik from "../../pic/iksan.png"
 import { Link } from 'react-router-dom'
-import Menubar1 from '../main/Menubar1'
+import Menubar1 from './Menubar1'
 
 export default function Header() {
     return (
