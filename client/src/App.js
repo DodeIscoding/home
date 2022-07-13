@@ -5,7 +5,7 @@ import CCTV from "./components/views/Page/CCTV"
 import Parking from "./components/views/Page/Parking"
 import MapContainer from "./components/views/html/KakaoMap"
 import Noticeboard from "./components/views/Page/Noticeboard.js";
-import Contentsboard from "../src/components/views/html/Noticeboard/Contentsboard"
+import Contentsboard from "./components/views/html/Noticeboard/Contentsboard"
 
 
 function App() {

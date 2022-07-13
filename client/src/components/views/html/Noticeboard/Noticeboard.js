@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { re, add, add1, cancel } from "../../js/back"
 import "./Notice.css";
 import Axios, { post } from "axios";
@@ -7,7 +7,7 @@ import ReactHtmlParser from "react-html-parser"
 import moment from 'moment';
 import Pagination from "./Pagination"
 import axios from 'axios';
-
+ 
 export default function Noticeboard() {
 
     let timer = null;
@@ -26,13 +26,16 @@ export default function Noticeboard() {
     const [ContentValue, setContentValue] = useState("")
     const [idx,setidx] = useState()
     const [viewContent, setViewContent] = useState([]);
+
     const [postsPerPage] = useState(8);
+
     const [currentPage, setCurrentPage] = useState(1);
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = viewContent.slice(indexOfFirstPost, indexOfLastPost);
+    const currentPosts = viewContent.slice(indexOfFirstPost, indexOfLastPost).reverse();
+    
 
-      
+    
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -47,21 +50,32 @@ export default function Noticeboard() {
                 time1: new_time,
 
             }).then((response) => {
-                console.log(response)
             })
         setTitleValue("")
         setContentValue("")
+        getpost()
     };
-    useEffect(() => {
+    
+    const getpost = () => {
         Axios.get("http://localhost:4000/list", {})
-            .then((res) => {
-                const { data } = res;
-                for(var i=0; i< data.length; i++){
-                    setidx(data[i].idx)
-                }
-                setViewContent(data)
-            })
-    }, [viewContent])
+        .then((res) => {
+            const { data } = res;
+            for(var i=0; i< data.length; i++){
+                setidx(data[i].idx)
+            }
+            data.sort(function(a , b){
+                return 
+            });
+            setViewContent(data)
+        })
+    }
+
+
+    useEffect(() => {
+        getpost()
+    }, [getpost])
+
+
     
 
     const search = () => {
@@ -112,18 +126,22 @@ export default function Noticeboard() {
                             <div className="view">조회수</div>
                         </div>
                         <div id="list" className="lkj-under">
-                            {currentPosts.map((element) =>
-                                <div className='mnb'key={element.idx}>
+                            
+                            {currentPosts && currentPosts.map((element) =>
+                                {   
+                                    return [<div className='mnb'key={element.idx}>
                                     <div className='num-1' >{element.idx} </div>
                                     <div className='noticetitle-1'>{element.title}</div>
                                     <div className='writer-1'>{element.name}</div>
                                     <div className='time-1'>{element.new_time}</div>
                                     <div className='view-1'></div>
-                                </div>
+                                </div>]
+                                }
                             )}
                         </div>
                         <div className="next">
-                            <Pagination postsPerPage={postsPerPage} totalPosts={viewContent.length} currentPage={currentPage} paginate={paginate}></Pagination>
+                            <Pagination postsPerPage={postsPerPage} totalPosts={viewContent.length}
+                             currentPage={currentPage} paginate={paginate}></Pagination>
                         </div>
                     </div>
                 </div>

@@ -16,20 +16,6 @@ export default function mini_state4() {
           <p className={state.mini_km_text}>10Km/h</p>
         </div>
       </div>
-      <div className={state.mini_info}>
-        <div className={state.mini_good}>
-          <p className={state.mini_good_text}>원활</p>
-        </div>
-        <div className={state.mini_wait_1}>
-          <p className={state.mini_wait_text_1}>지체</p>
-        </div>
-        <div className={state.mini_stop}>
-          <p className={state.mini_stop_text}>정체</p>
-        </div>
-        <div className={state.mini_no}>
-          <p className={state.mini_no_text}>정보없음</p>
-        </div>
-      </div>
     </div>
   )
 }

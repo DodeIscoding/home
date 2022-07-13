@@ -1,5 +1,5 @@
 import Header5 from "../html/Noticeboard/Header5"
-import Noticeboard from "../html/Noticeboard/Noticeboard.js";
+import Noticeboard from "../html/Noticeboard/Noticeboard";
 import React from 'react'
 
 
