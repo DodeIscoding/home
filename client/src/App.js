@@ -6,7 +6,7 @@ import Parking from "./components/views/Page/Parking"
 import MapContainer from "./components/views/html/KakaoMap"
 import Noticeboard from "./components/views/Page/Noticeboard.js";
 import Contentsboard from "./components/views/html/Noticeboard/Contentsboard"
-
+import postView from "./components/views/html/Noticeboard/PostView"
 
 function App() {
   
@@ -14,13 +14,13 @@ function App() {
     <Router>
     <div>
        <Switch>
-       <Route exact path="/Contentsboard:idx" component={(Contentsboard)} />
-        <Route exact path="/Noticeboard" component={(Noticeboard)} />
+          <Route exact path="/Noticeboard" component={(Noticeboard)} />
           <Route exact path="/map" component={(MapContainer)} />
           <Route exact path="/" component={(Main)} />
           <Route exact path="/Communication" component={(Communication)} />
           <Route exact path="/CCTV" component={(CCTV)} />
           <Route exact path="/Parking" component={Parking} />
+          <Route exact path="/postView/:idx" component={postView} />
         </Switch>
     </div>
   </Router>

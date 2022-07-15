@@ -167,6 +167,8 @@
     margin: 0px;
     margin-left: 50px;
     margin-top: 9px;
+    position: absolute;
+    right: -370px;
 }
 .but_box {
     width: 0px;

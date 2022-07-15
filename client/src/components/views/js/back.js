@@ -278,55 +278,6 @@ var number = 0;
 var temp3;
 var rediv;
 var list = document.getElementById("list");
-export const  add = () => {
-    let today = new Date();
-    let year = today.getFullYear(); // 년도
-    let month = today.getMonth() + 1;  // 월
-    let date = today.getDate();  // 날짜
-
-    number = number + 1;
-    const newDiv1 = document.createElement('a');
-    newDiv1.setAttribute('id', "div" + number);
-    newDiv1.setAttribute('class', "mnb");
-    newDiv1.setAttribute('href', "#");
-    list.appendChild(newDiv1);
-
-    const newDiv3 = document.createElement('div');
-    newDiv3.setAttribute('class', "num-1");
-    const newText3 = document.createTextNode(number);
-    newDiv3.appendChild(newText3);
-    newDiv1.appendChild(newDiv3);
-
-    const newDiv4 = document.createElement('div');
-    newDiv4.setAttribute('class', "noticetitle-1");
-    const newText4 = document.createTextNode(temp3);
-    newDiv4.appendChild(newText4);
-    newDiv1.appendChild(newDiv4);
-
-    const newDiv5 = document.createElement('div');
-    newDiv5.setAttribute('class', "writer-1");
-    const newText5 = document.createTextNode("관리자");
-    newDiv5.appendChild(newText5);
-    newDiv1.appendChild(newDiv5);
-
-    const newDiv6 = document.createElement('div');
-    newDiv6.setAttribute('class', "time-1");
-    const newText6 = document.createTextNode(year + '/' + month + '/' + date);
-    newDiv6.appendChild(newText6);
-    newDiv1.appendChild(newDiv6);
-
-    const newDiv7 = document.createElement('div');
-    newDiv7.setAttribute('class', "view-1");
-    const newText7 = document.createTextNode(number);
-    newDiv7.appendChild(newText7);
-    newDiv1.appendChild(newDiv7);
-
-    document.querySelector(".lll").classList.remove("display-off");
-    document.getElementById("addlist").classList.add("display-off")
-    document.getElementById("addlist").classList.remove("poi")
-    document.getElementById("total_number").innerText = number;
-    document.getElementById("tittle").value = null;
-}
 
 export const  add2 = () => {
     var input3 = document.getElementById("tittle").value;

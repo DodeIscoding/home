@@ -48,6 +48,9 @@
     margin-left: 20px;
     color: #180e5e;
 }
+.search_box{
+    display: none;
+}
 .search_main {
     margin-top: 25px;
 }

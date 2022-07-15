@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { re, add, add1, cancel } from "../../js/back"
 import "./Notice.css";
-import Axios, { post } from "axios";
-import { useHistory } from "react-router-dom"
-import ReactHtmlParser from "react-html-parser"
+import Axios    from "axios";
+import { Link } from "react-router-dom"
 import moment from 'moment';
 import Pagination from "./Pagination"
-import axios from 'axios';
+
  
 export default function Noticeboard() {
 
@@ -26,13 +25,13 @@ export default function Noticeboard() {
     const [ContentValue, setContentValue] = useState("")
     const [idx,setidx] = useState()
     const [viewContent, setViewContent] = useState([]);
-
-    const [postsPerPage] = useState(8);
+const [postsPerPage] = useState(8);
 
     const [currentPage, setCurrentPage] = useState(1);
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = viewContent.slice(indexOfFirstPost, indexOfLastPost).reverse();
+    
     
 
     
@@ -63,9 +62,6 @@ export default function Noticeboard() {
             for(var i=0; i< data.length; i++){
                 setidx(data[i].idx)
             }
-            data.sort(function(a , b){
-                return 
-            });
             setViewContent(data)
         })
     }
@@ -129,13 +125,15 @@ export default function Noticeboard() {
                             
                             {currentPosts && currentPosts.map((element) =>
                                 {   
-                                    return [<div className='mnb'key={element.idx}>
+                                    return [
+                                    <div className='mnb'key={element.idx}>
                                     <div className='num-1' >{element.idx} </div>
-                                    <div className='noticetitle-1'>{element.title}</div>
+                                    <Link to={`/postView/${element.idx}`} className='noticetitle-1'>{element.title}</Link>
                                     <div className='writer-1'>{element.name}</div>
                                     <div className='time-1'>{element.new_time}</div>
                                     <div className='view-1'></div>
-                                </div>]
+                                    </div>
+                                ]
                                 }
                             )}
                         </div>
@@ -149,10 +147,10 @@ export default function Noticeboard() {
             <div id="addlist" className="display-off">
                 <div className="announce">공지사항 </div>
                 <div className="tittle">제목
-                    <input onChange={onTitleChange} value={TitleValue} type="text" name="title" id="tittle" style={{ marginLeft: '20px', marginTop: '10px' }} />
+                    <input onChange={onTitleChange} value={TitleValue} type="textarea" name="title" id="tittle" style={{ marginLeft: '20px', marginTop: '10px' }} />
                 </div>
                 <div className="aaa">내용
-                    <input onChange={onContentChange} value={ContentValue} name='content' type="text" id="add" style={{ marginLeft: '20px', marginTop: '10px' }} />
+                    <textarea onChange={onContentChange} value={ContentValue} name='content' type="textarea" id="add" style={{ marginLeft: '20px', marginTop: '10px' }} />
                 </div>
                 <div className="button_box">
                     <button onClick={submitTest} id="save" className="button">저장</button>
@@ -161,4 +159,7 @@ export default function Noticeboard() {
             </div>
         </>
     )
+
+    
 }
+
