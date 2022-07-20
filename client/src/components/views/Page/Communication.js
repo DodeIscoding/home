@@ -15,7 +15,6 @@ export default function Communication() {
         <Map />
         <Map_state/>
         <Header2/>
-        <Mini/>
         <Sidebar2 />
         <Bottom/>
         </div>

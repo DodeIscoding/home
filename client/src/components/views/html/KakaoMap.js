@@ -11,14 +11,13 @@ const MapContainer = (setAddress) => {
   useEffect(() => {
     const container = document.getElementById('myMap');
     const options = {
-      center: new kakao.maps.LatLng(35.12, 129.1),
+      center: new kakao.maps.LatLng(35.947276159041486, 126.95951173241967),
       level: 3
     };
     // 지도를 생성합니다.
     const map = new kakao.maps.Map(container, options);
     // 소통정보에서 작동함
     if (location.pathname == "/Communication") {
-      console.log("Communication")
       // 주소-좌표 변환 객체를 생성합니다.
       const geocoder = new kakao.maps.services.Geocoder();
       // 주소로 좌표를 검색합니다..
@@ -46,19 +45,8 @@ const MapContainer = (setAddress) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
     // cctv 위치를 마커로 표시
     if (location.pathname == "/CCTV") {
-      console.log("CCTV")
       var positions = [
         {
           content:
@@ -66,27 +54,13 @@ const MapContainer = (setAddress) => {
             '    <div class="info">' +
             '       <div class="test_box">' +
             '           <div class="title">' +
-            '               <p class="test_box_title1">북부시장</p>' +
+            '               <p class="test_box_title1">상공회의소 사거리</p>' +
             '           </div>' +
             '        </div>' +
             ' <img class="test_img" src="https://ifh.cc/g/CX1Khf.jpg"/> '+
             '    </div>' +
             '</div>',
-          latlng: new kakao.maps.LatLng(35.11986697412261, 129.10041361171113),
-        },
-        {
-          content: 
-          '<div class="wrap">' +
-          '    <div class="info">' +
-          '       <div class="test_box">' +
-          '           <div class="title">' +
-          '               <p class="test_box_title1">북부시장</p>' +
-          '           </div>' +
-          '        </div>' +
-          ' <img class="test_img" src="https://ifh.cc/g/CX1Khf.jpg"/> '+
-          '    </div>' +
-          '</div>',
-          latlng: new kakao.maps.LatLng(35.12134515011343, 129.09870765459877),
+          latlng: new kakao.maps.LatLng(35.94526280277953, 126.9557333595236),
         },
         {
           content:
@@ -94,13 +68,27 @@ const MapContainer = (setAddress) => {
           '    <div class="info">' +
           '       <div class="test_box">' +
           '           <div class="title">' +
-          '               <p class="test_box_title1">북부시장</p>' +
+          '               <p class="test_box_title1">전북대오거리</p>' +
           '           </div>' +
           '        </div>' +
           ' <img class="test_img" src="https://ifh.cc/g/CX1Khf.jpg"/> '+
           '    </div>' +
           '</div>',
-          latlng: new kakao.maps.LatLng(35.11737292426001, 129.09937894654482),
+          latlng: new kakao.maps.LatLng(35.944263903603705, 126.9599455117176),
+        },
+        {
+          content: 
+          '<div class="wrap">' +
+          '    <div class="info">' +
+          '       <div class="test_box">' +
+          '           <div class="title">' +
+          '               <p class="test_box_title1">동부시장오거리</p>' +
+          '           </div>' +
+          '        </div>' +
+          ' <img class="test_img" src="https://ifh.cc/g/CX1Khf.jpg"/> '+
+          '    </div>' +
+          '</div>',
+          latlng: new kakao.maps.LatLng(35.94588809638791, 126.96631763093687),
         }
       ];
 
@@ -157,14 +145,13 @@ const MapContainer = (setAddress) => {
 
 
     if (location.pathname == "/Parking") {
-      console.log("Parking")
       var position = [
         {
           content: '<div class="wrap">' +
             '    <div class="info">' +
             '<div class="test_box">' +
             ' <div class="title">' +
-            '   <p class="test_box_title1">북부시장</p>' +
+            '   <p class="test_box_title1">익산시청</p>' +
             ' </div>' +
             ' <div class="test_box_text_box">' +
             '   <div class="parking_number">' +
@@ -193,14 +180,14 @@ const MapContainer = (setAddress) => {
             '</div>' +
             '    </div>' +
             '</div>',
-          latlng: new kakao.maps.LatLng(35.11887990573059, 129.09900085093426),
+          latlng: new kakao.maps.LatLng(35.94798962269014, 126.95728909353772),
         },
         {
           content: '<div class="wrap">' +
             '    <div class="info">' +
             '<div class="test_box">' +
             ' <div class="title">' +
-            '   <p class="test_box_title1">북부시장</p>' +
+            '   <p class="test_box_title1">익산시청제2청사</p>' +
             ' </div>' +
             ' <div class="test_box_text_box">' +
             '   <div class="parking_number">' +
@@ -229,14 +216,14 @@ const MapContainer = (setAddress) => {
             '</div>' +
             '    </div>' +
             '</div>',
-          latlng: new kakao.maps.LatLng(35.12041469908119, 129.09649568149626),
+          latlng: new kakao.maps.LatLng(35.94728306615589, 126.9599523006708),
         },
         {
           content: '<div class="wrap">' +
             '    <div class="info">' +
             '<div class="test_box">' +
             ' <div class="title">' +
-            '   <p class="test_box_title1">북부시장</p>' +
+            '   <p class="test_box_title1">익산남중동우체국</p>' +
             ' </div>' +
             ' <div class="test_box_text_box">' +
             '   <div class="parking_number">' +
@@ -265,7 +252,7 @@ const MapContainer = (setAddress) => {
             '</div>' +
             '    </div>' +
             '</div>',
-          latlng: new kakao.maps.LatLng(35.12130548352698, 129.102035432266),
+          latlng: new kakao.maps.LatLng(35.95003124629052, 126.95817471073751),
         }
       ];
       for (var i = 0; i < position.length; i++) {

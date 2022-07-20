@@ -56,3 +56,8 @@
 .select option {
     color: gray;
 }
+.bottom-menu-1:hover {
+    font-size: 15px;
+    /* color: #3e91b5; */
+    color: black;
+}

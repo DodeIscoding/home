@@ -9,7 +9,8 @@ import PopupPostCode from '../../test/PopupPostCode';
 export default function Sidebar2() {
     const [AddressCount, setAddressCount] = useState();
     const [Address, setAddress] = useState();
-
+    console.log(Address)
+    console.log(AddressCount)
     return (
         <div className={bar2.body_c}>
             <div id="body_but_box" className={bar2.body_but_box}>
@@ -49,7 +50,7 @@ export default function Sidebar2() {
                         </div>
                         <div className={bar2.street}>
                             <div id="scroll" className={bar2.scroll}>
-                                <PopupPostCode setAddressCount={(count) => { setAddressCount(count) }} setAddress={(search_address) => { setAddress(search_address) }} />
+                                <PopupPostCode setAddressCount={(count) => { setAddressCount(count)}} setAddress={(search_address) => { setAddress(search_address) }} />
                             </div>
                         </div>
                     </div>

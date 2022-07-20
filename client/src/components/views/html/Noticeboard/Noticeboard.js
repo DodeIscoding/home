@@ -21,19 +21,17 @@ export default function Noticeboard() {
     }, []);
     const new_time = time.format('YYYY.MM.DD');
 
+    const [DBsearch, setDBsearch] = useState();
     const [TitleValue, setTitleValue] = useState("")
     const [ContentValue, setContentValue] = useState("")
+    const [SearchValue, setSearchValue] = useState("")
     const [idx,setidx] = useState()
     const [viewContent, setViewContent] = useState([]);
-const [postsPerPage] = useState(8);
-
+    const [postsPerPage] = useState(8);
     const [currentPage, setCurrentPage] = useState(1);
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = viewContent.slice(indexOfFirstPost, indexOfLastPost).reverse();
-    
-    
-
     
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -52,7 +50,7 @@ const [postsPerPage] = useState(8);
             })
         setTitleValue("")
         setContentValue("")
-        getpost()
+
     };
     
     const getpost = () => {
@@ -75,8 +73,14 @@ const [postsPerPage] = useState(8);
     
 
     const search = () => {
-        
+        Axios.post("http://localhost:4000/search",
+        {
+            title_Search : SearchValue
+        }).then((response) => {
+            console.log(response)
+        })
     }
+    
     const cancel = () => {
         document.querySelector(".lll").classList.remove("display-off");
         document.getElementById("addlist").classList.add("display-off")
@@ -84,13 +88,16 @@ const [postsPerPage] = useState(8);
         setTitleValue("")
         setContentValue("")
     }
-    const onTitleChange = (event) => {
+    const onTitleChange = (event) => {    
         setTitleValue(event.currentTarget.value);
     };
     const onContentChange = (event) => {
         setContentValue(event.currentTarget.value);
     };
+    const onSearch = (event) => {
+        setSearchValue(event.currentTarget.value)
 
+    }
 
     
     return (
@@ -108,7 +115,7 @@ const [postsPerPage] = useState(8);
                             <p className="total-gun">건</p>
                         </div>
                         <div className="search-a">
-                            <input type="text" id="text" placeholder="검색어를 입력해주세요" />
+                            <input type="text" id="text" value={SearchValue} onChange={onSearch} placeholder="검색어를 입력해주세요" />
                             <button className='button' onClick={add1}>추가</button>
                             <button className='button' onClick={search}>검색</button>
                         </div>
@@ -126,14 +133,14 @@ const [postsPerPage] = useState(8);
                             {currentPosts && currentPosts.map((element) =>
                                 {   
                                     return [
-                                    <div className='mnb'key={element.idx}>
+                                    <div className='mnb' key={element.idx}>
                                     <div className='num-1' >{element.idx} </div>
                                     <Link to={`/postView/${element.idx}`} className='noticetitle-1'>{element.title}</Link>
                                     <div className='writer-1'>{element.name}</div>
                                     <div className='time-1'>{element.new_time}</div>
                                     <div className='view-1'></div>
                                     </div>
-                                ]
+                                           ]
                                 }
                             )}
                         </div>
@@ -147,10 +154,10 @@ const [postsPerPage] = useState(8);
             <div id="addlist" className="display-off">
                 <div className="announce">공지사항 </div>
                 <div className="tittle">제목
-                    <input onChange={onTitleChange} value={TitleValue} type="textarea" name="title" id="tittle" style={{ marginLeft: '20px', marginTop: '10px' }} />
+                    <input onChange={onTitleChange} placeholder="30자" value={TitleValue} type="textarea" name="title" id="tittle" style={{ marginLeft: '20px', marginTop: '10px' }} />
                 </div>
                 <div className="aaa">내용
-                    <textarea onChange={onContentChange} value={ContentValue} name='content' type="textarea" id="add" style={{ marginLeft: '20px', marginTop: '10px' }} />
+                    <textarea onChange={onContentChange} placeholder="500자 내" value={ContentValue} name='content' type="textarea" id="add" style={{ marginLeft: '20px', marginTop: '10px' }} />
                 </div>
                 <div className="button_box">
                     <button onClick={submitTest} id="save" className="button">저장</button>

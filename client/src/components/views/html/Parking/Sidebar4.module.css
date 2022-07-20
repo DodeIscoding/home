@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap');
 .body_c{
     width: 0px;
-    top: 120px;
+    top: 70px;
     position: absolute;
     height: 90vh;
     display: flex;
@@ -11,7 +11,7 @@
     display: flex;
 }
 .body_b{
-    height: 90vh;
+    height: 100vh;
     background: #eff1fa;
     padding: 0px;
     width: 400px;

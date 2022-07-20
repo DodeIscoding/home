@@ -36,45 +36,20 @@ export default function Sidebar4() {
                     <div className={bar4.street}>
                         <div className={bar4.scroll}>
                             <div className={bar4.address}>
-                                <p className={bar4.address_address}>함열파출소 옆 공영주차장</p>
+                                <p className={bar4.address_address}>익산남중동 <br/>우체국</p>
                                 <div className={bar4.address_list}>
-                                    <p className={bar4.address_address_1}>함라면 함열리 432</p>
+                                    <p className={bar4.address_address_1}>전라북도 익산시 인북로 242</p>
                                 </div>
                             </div>
                             <div className={bar4.address}>
-                                <p className={bar4.address_address}>함열파출소 옆 공영주차장</p>
+                                <p className={bar4.address_address}>익산시청</p>
                                 <div className={bar4.address_list}>
-                                    <p className={bar4.address_address_1}>함라면 함열리 432</p>
+                                    <p className={bar4.address_address_1}>전라북도 익산시 <br/> 인북로32길 1</p>
                                 </div>
                             </div><div className={bar4.address}>
-                                <p className={bar4.address_address}>함열파출소 옆 공영주차장</p>
+                                <p className={bar4.address_address}>익산시청 <br/>제2청사</p>
                                 <div className={bar4.address_list}>
-                                    <p className={bar4.address_address_1}>함라면 함열리 432</p>
-                                </div>
-                            </div><div className={bar4.address}>
-                                <p className={bar4.address_address}>함열파출소 옆 공영주차장</p>
-                                <div className={bar4.address_list}>
-                                    <p className={bar4.address_address_1}>함라면 함열리 432</p>
-                                </div>
-                            </div><div className={bar4.address}>
-                                <p className={bar4.address_address}>함열파출소 옆 공영주차장</p>
-                                <div className={bar4.address_list}>
-                                    <p className={bar4.address_address_1}>함라면 함열리 432</p>
-                                </div>
-                            </div><div className={bar4.address}>
-                                <p className={bar4.address_address}>함열파출소 옆 공영주차장</p>
-                                <div className={bar4.address_list}>
-                                    <p className={bar4.address_address_1}>함라면 함열리 432</p>
-                                </div>
-                            </div><div className={bar4.address}>
-                                <p className={bar4.address_address}>함열파출소 옆 공영주차장</p>
-                                <div className={bar4.address_list}>
-                                    <p className={bar4.address_address_1}>함라면 함열리 432</p>
-                                </div>
-                            </div><div className={bar4.address}>
-                                <p className={bar4.address_address}>함열파출소 옆 공영주차장</p>
-                                <div className={bar4.address_list}>
-                                    <p className={bar4.address_address_1}>함라면 함열리 432</p>
+                                    <p className={bar4.address_address_1}>전라북도 익산시 <br/>     인북로38길 1</p>
                                 </div>
                             </div>
                         </div>

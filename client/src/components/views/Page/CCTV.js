@@ -13,7 +13,6 @@ export default function CCTV() {
         <Map></Map>
         <Map_state></Map_state>
         <Header3></Header3>
-        <Mini/>
         <Sidebar3></Sidebar3>
         <Bottom></Bottom>
         </div>

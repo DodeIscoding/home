@@ -18,7 +18,7 @@ const PostView = (props) => {
         setPageNumber(idx - 1)
     },[])
     console.log(pageNumber)
-
+    
   return (
     <>
       <h2 align="center">게시글 상세정보</h2>
