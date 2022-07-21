@@ -66,8 +66,8 @@ export default function Bottom() {
                     <div className="monitoring">
                         <div className="monitoring-1">
                             <Link to="/" className="bottom-menu-1">모니터링단홈페이지</Link>
+                            </div>
                         </div>
-                    </div>
                     {/* 교통불편민원신고 */}
                     <div className="declaration">
                         <a href="http://www.molit.go.kr/irocm/USR/WPGE0201/m_15604/DTL.jsp" target="_blank" className="bottom-menu-1">교통불편민원신고</a>
